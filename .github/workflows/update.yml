@@ -1,0 +1,73 @@
+name: Update Node.js LTS
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v17
+
+      - name: Check for updates
+        id: check
+        shell: bash
+        run: |
+          output="$(nix develop --command ./update.sh)"
+          echo "$output"
+
+          if echo "$output" | grep -q 'UPDATE_NEEDED=true'; then
+            echo "update_needed=true" >> "$GITHUB_OUTPUT"
+            new_version="$(echo "$output" | awk -F= '/^NEW_VERSION=/{print $2}')"
+            echo "new_version=$new_version" >> "$GITHUB_OUTPUT"
+          else
+            echo "update_needed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update version metadata
+        if: steps.check.outputs.update_needed == 'true'
+        run: nix develop --command ./update.sh --update
+
+      - name: Validate flake
+        if: steps.check.outputs.update_needed == 'true'
+        run: nix flake check
+
+      - name: Push update
+        if: steps.check.outputs.update_needed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add version.json
+          git commit -m "chore: update nodejs lts to ${{ steps.check.outputs.new_version }}"
+          git push origin HEAD:main
+
+      - name: Summary
+        shell: bash
+        run: |
+          if [[ "${{ steps.check.outputs.update_needed }}" == "true" ]]; then
+            {
+              echo "## Update Applied"
+              echo
+              echo "Updated to Node.js ${{ steps.check.outputs.new_version }}"
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "## No Update Needed"
+              echo
+              echo "Already on the latest Node.js LTS release"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi

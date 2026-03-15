@@ -1,0 +1,17 @@
+{
+  "version": "24.14.0",
+  "lts": "Krypton",
+  "attr": "nodejs_v24_14_0",
+  "assets": {
+    "x86_64-linux": "node-v24.14.0-linux-x64.tar.xz",
+    "aarch64-linux": "node-v24.14.0-linux-arm64.tar.xz",
+    "x86_64-darwin": "node-v24.14.0-darwin-x64.tar.xz",
+    "aarch64-darwin": "node-v24.14.0-darwin-arm64.tar.xz"
+  },
+  "hashes": {
+    "x86_64-linux": "sha256-Qc15u3h3yBYFqeaOxMkVR3dPRqQMZ6F+NNcXnvEXKd8=",
+    "aarch64-linux": "sha256-5638oD2RcydhFKbyIZ3xp9JeG/1rvXcdP4ORGKIFMJQ=",
+    "x86_64-darwin": "sha256-wXsjTE23XusDw6hmZEKOwl7oSeHrvoywXEpw8oIYeGY=",
+    "aarch64-darwin": "sha256-RI8B1N+loh0oDPus8Aq8IrUarVLzjbD0iG4OXQDfVB0="
+  }
+}
