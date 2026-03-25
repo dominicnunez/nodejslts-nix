@@ -1,17 +1,17 @@
 {
-  "version": "24.14.0",
+  "version": "24.14.1",
   "lts": "Krypton",
-  "attr": "nodejs_v24_14_0",
+  "attr": "nodejs_v24_14_1",
   "assets": {
-    "x86_64-linux": "node-v24.14.0-linux-x64.tar.xz",
-    "aarch64-linux": "node-v24.14.0-linux-arm64.tar.xz",
-    "x86_64-darwin": "node-v24.14.0-darwin-x64.tar.xz",
-    "aarch64-darwin": "node-v24.14.0-darwin-arm64.tar.xz"
+    "x86_64-linux": "node-v24.14.1-linux-x64.tar.xz",
+    "aarch64-linux": "node-v24.14.1-linux-arm64.tar.xz",
+    "x86_64-darwin": "node-v24.14.1-darwin-x64.tar.xz",
+    "aarch64-darwin": "node-v24.14.1-darwin-arm64.tar.xz"
   },
   "hashes": {
-    "x86_64-linux": "sha256-Qc15u3h3yBYFqeaOxMkVR3dPRqQMZ6F+NNcXnvEXKd8=",
-    "aarch64-linux": "sha256-5638oD2RcydhFKbyIZ3xp9JeG/1rvXcdP4ORGKIFMJQ=",
-    "x86_64-darwin": "sha256-wXsjTE23XusDw6hmZEKOwl7oSeHrvoywXEpw8oIYeGY=",
-    "aarch64-darwin": "sha256-RI8B1N+loh0oDPus8Aq8IrUarVLzjbD0iG4OXQDfVB0="
+    "x86_64-linux": "sha256-hNOHFdRJRHEX0Fw+cazXjapJ1bG/qKrPYQMDkgwzIr4=",
+    "aarch64-linux": "sha256-ceQn4ot4hG8gHU1ezDDLE9FQjKCZ7zhxiJoSVsfW9n4=",
+    "x86_64-darwin": "sha256-qHo3oQwvr2V0LH1YEvW6uHju5SsN/99Xj0m3qAjZbd0=",
+    "aarch64-darwin": "sha256-Di5nnXZ0PW2SJeYTJ6HdwyTkqJqAiRx4wzcghgHZj3c="
   }
 }
